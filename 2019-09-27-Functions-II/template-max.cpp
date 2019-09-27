@@ -1,7 +1,7 @@
 #include <iostream>
 
-template <typename T>
-T max(T a, T b)
+template <typename T, typename S>
+T max(T a, S b)
 {
   T result = 0;
   if ( a >= b ) {
@@ -17,7 +17,8 @@ int main(void)
 {
   std::cout << max(-3.2, -3.5) << "\n";
   std::cout << max(2, -5) << "\n";
-  //std::cout << max(1.1, -7) << "\n"; // error, no hay funcion sobre cargada para esta combinacion
+  std::cout << max(1.1, -7) << "\n"; 
+  std::cout << max(-7, 1.1) << "\n"; 
   
   return 0;
 }
