@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream> // imprimir a un archivo
 #include <cmath>
 
 double fun(double x);
@@ -9,19 +10,22 @@ double dev_central_richardson(double x, double h);
 
 int main(void)
 {
-  std::cout.precision(16); std::cout.setf(std::ios::scientific);
+  std::ofstream fout("datos.txt");
+  fout.precision(16); fout.setf(std::ios::scientific);
 
   double x = M_PI/3.0; // M_PI defined inside cmath
   double h = 0.1;
 
   for(h=1.0; h >= 1.0e-4; h /= 2.0) {
     double exact = std::cos(x);
-    std::cout << h << "\t"
-	      << std::fabs(dev_forward(x, h)-exact)/exact << "\t"
-	      << std::fabs(dev_central(x, h)-exact)/exact << "\t"
-	      << std::fabs(dev_forward_richardson(x, h)-exact)/exact << "\t"
-	      << std::fabs(dev_central_richardson(x, h)-exact)/exact << "\n";
+    fout << h << "\t"
+	 << std::fabs(dev_forward(x, h)-exact)/exact << "\t"
+	 << std::fabs(dev_central(x, h)-exact)/exact << "\t"
+	 << std::fabs(dev_forward_richardson(x, h)-exact)/exact << "\t"
+	 << std::fabs(dev_central_richardson(x, h)-exact)/exact << "\n";
   }
+  fout.close();
+  
   return 0;
 }
 
