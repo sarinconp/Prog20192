@@ -5,6 +5,7 @@ double fun(double x);
 double dev_forward(double x, double h);
 double dev_central(double x, double h);
 double dev_forward_richardson(double x, double h);
+double dev_central_richardson(double x, double h);
 
 int main(void)
 {
@@ -22,7 +23,8 @@ int main(void)
 	      << std::cos(x) << "\t"
 	      << dev_forward(x, h) << "\t"
 	      << dev_central(x, h) << "\t"
-	      << dev_forward_richardson(x, h) << "\n";
+	      << dev_forward_richardson(x, h) << "\t"
+	      << dev_central_richardson(x, h) << "\n";
   }
   return 0;
 }
@@ -47,5 +49,12 @@ double dev_forward_richardson(double x, double h)
 {
   double result1 = dev_forward(x, h);
   double result2 = dev_forward(x, h/2);
+  return (4*result2 - result1)/3;
+}
+
+double dev_central_richardson(double x, double h)
+{
+  double result1 = dev_central(x, h);
+  double result2 = dev_central(x, h/2);
   return (4*result2 - result1)/3;
 }
