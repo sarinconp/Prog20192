@@ -17,12 +17,13 @@ int main(void)
   // std::cos(x), dev_forward(x, h),
   // dev_central(x, h), dev_forward_richardson(x, h));
 
-  std::cout << x << "\t" << h << "\t"
-	    << std::cos(x) << "\t"
-	    << dev_forward(x, h) << "\t"
-	    << dev_central(x, h) << "\t"
-	    << dev_forward_richardson(x, h) << "\n";
-  
+  for(x=0.0; x <= M_PI; x+= 0.01) {
+    std::cout << x << "\t" << h << "\t"
+	      << std::cos(x) << "\t"
+	      << dev_forward(x, h) << "\t"
+	      << dev_central(x, h) << "\t"
+	      << dev_forward_richardson(x, h) << "\n";
+  }
   return 0;
 }
 
