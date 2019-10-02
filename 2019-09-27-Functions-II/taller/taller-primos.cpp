@@ -7,7 +7,7 @@ void print_primes(int m, int n);
 
 int main(void)
 {
-  print_primes(3, 100000);
+  print_primes(3, 10000);
   return 0;
 }
 
